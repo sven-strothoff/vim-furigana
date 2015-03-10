@@ -1,0 +1,102 @@
+*furigana.txt*	For Vim version 7.4.	Last change: 2015 Mar 10
+
+
+	    FURIGANA PLUGIN MANUAL    by Sven Strothoff~
+
+
+Help on furigana plugin					*furigana*
+
+1. Introduction			|furigana-introduction|
+2. Requirements			|furigana-requirements|
+3. Usage			|furigana-usage|
+4. Configuration		|furigana-configuration|
+5. Caveats			|furigana-caveats|
+6. Acknowledgements		|furigana-acknowledgements|
+7. License			|furigana-license|
+
+==============================================================================
+1. Introduction					*furigana-introduction*
+
+The furigana plugin adds furigana to Japanese texts.
+
+What is furigana?~
+
+Furigana are small characters added to Japanese texts to show the pronounciation
+of complicated or uncommon kanji.
+
+What is ruby?~
+
+Ruby is the general term for these kinds of annotations.  This kind of
+pronounciation guide is not limited to Japan, but used in all languages that use
+Chinese characters (like Chinese, Japanese and Korean).
+
+This plugin is not really limited to Japanese texts, however support for other
+languages has not yet been integrated.
+
+Why is this plugin called furigana and not ruby?~
+
+For the simple reason to avoid confusion with the Ruby scripting language.
+
+==============================================================================
+2. Requirements					*furigana-requirements*
+
+Your version of Vim has to be compiled with Python support. If |:version| includes
+|+python| you are good to go.
+
+This plugin requires mecab to analyse the texts and split them into words.
+Additionally kakasi is required for the katakana to hiragana conversion.
+
+==============================================================================
+3. Usage					*furigana-usage*
+
+There are several ways to generate furigana.  The main mapping defined by the
+plugin is <gr> (mnemonic: generate ruby).  This can be followed by a motion.
+For example <graw> can be used to add furigana to a word.
+To add furigana to the current line you can use <grr>.
+It is also possible to use <gr> in visual mode.
+
+==============================================================================
+4. Configuration				*furigana-configuration*
+
+					*'g:furigana_format_string'*
+'g:furigana_format_string'		string (default: "\\ruby{%k}{%r}")
+					global
+	This pattern is used to add furigana to the selected text.  The
+	placeholders %k (for kanji) and %r (for reading, i.e., the
+	furigana/ruby) can be used.
+
+	The default format string can be used for LaTeX documents that can
+	handle the ruby command (i.e., XeLaTeX).
+
+	For HTML ruby tags this format string could be used:
+	"<ruby>%k<rp>(</rp><rt>%r</rt><rp>)</rp></ruby>"
+
+==============================================================================
+7. License					*furigana-license*
+
+Copyright (c) 2015, Sven Strothoff
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Sven Strothoff nor the names of contributors to
+      this software may be used to endorse or promote products derived from
+      this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL SVEN STROTHOFF BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+ vim:tw=78:ts=8:sw=8:noet:ft=help:norl:
