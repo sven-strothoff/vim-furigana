@@ -88,17 +88,3 @@ def add_ruby_substring(string, col_start, col_end, format_str='%k[%r]'):
   content += add_ruby(string[col_start:col_end], format_str)
   content += string[col_end:]
   return content
-
-
-if __name__ == '__main__':
-  print 'Ahoy!'
-
-  # TODO: move format string into setting
-  format_str = "\\ruby{%k}{%r}"
-
-  sentence = 'ご飯はfoo bar baz置いてますか。お金が欲しい。テニスをします。\n'
-
-  print add_ruby(sentence, format_str)
-  print add_ruby(sentence)
-
-  print 'Bye!'
