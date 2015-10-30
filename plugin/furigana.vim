@@ -54,15 +54,15 @@ if type == 'line' or type == 'V':
     cb[line] = add_ruby(cb[line], format_str)
 elif type == 'char' or type == 'v':
   if start[0] == end[0]: # same line
-    cb[start[0]] = add_ruby_substring(cb[start[0]], start[1], end[1] + 1, format_str)
+    cb[start[0]] = add_ruby_substring(cb[start[0]], start[1], end[1], format_str)
   else:
     cb[start[0]] = add_ruby_substring(cb[start[0]], start[1], sys.maxsize, format_str)
     for line in range(start[0] + 1, end[0]):
       cb[line] = add_ruby(cb[line], format_str)
-    cb[end[0]] = add_ruby_substring(cb[end[0]], 0, end[1] + 1, format_str)
+    cb[end[0]] = add_ruby_substring(cb[end[0]], 0, end[1], format_str)
 elif type == 'block' or type == '\x16': # <C-V>
   for line in range(start[0], end[0] + 1):
-    cb[line] = add_ruby_substring(cb[line], start[1], end[1] + 1, format_str)
+    cb[line] = add_ruby_substring(cb[line], start[1], end[1], format_str)
 EOF
 endfunction
 

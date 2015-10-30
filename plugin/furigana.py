@@ -81,10 +81,10 @@ def add_ruby(string, format_str='%k[%r]'):
 
   mecab.terminate()
   kakasi.terminate()
-  return ' '.join(parts)
+  return ' '.join(parts).encode('utf-8')
 
 def add_ruby_substring(string, col_start, col_end, format_str='%k[%r]'):
   content = string[0:col_start]
-  content += add_ruby(string[col_start:col_end], format_str)
-  content += string[col_end:]
+  content += add_ruby(string[col_start:col_end] + unicode(string[col_end:], 'utf-8')[0].encode('utf-8'), format_str)
+  content += unicode(string[col_end:], 'utf-8')[1:].encode('utf-8')
   return content
